@@ -1,0 +1,739 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Quick Demo",
+        "description": "",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/home": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Home",
+                "operationId": "home",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create Account",
+                "operationId": "create account",
+                "parameters": [
+                    {
+                        "name": "user_name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "1 - Male | 2 - female",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "dob",
+                        "in": "query",
+                        "description": "yyyy-mm-dd",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "user_name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "device_type",
+                        "in": "query",
+                        "description": "android | ios",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "device_token",
+                        "in": "query",
+                        "description": "device token for push notification",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User Profile",
+                "operationId": "profile",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/profile/edit": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Edit Profile",
+                "operationId": "edit-profile",
+                "parameters": [
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "1 - Male | 2 - female",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "dob",
+                        "in": "query",
+                        "description": "yyyy-mm-dd",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "photo": {
+                                        "description": "User Profile photo",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "file",
+                                            "format": "binary"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/username/check": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Username Check available or not register time",
+                "operationId": "Username-Check",
+                "parameters": [
+                    {
+                        "name": "user_name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Logout",
+                "operationId": "Logout",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/countries": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get Country List",
+                "operationId": "Country",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/following": {
+            "post": {
+                "tags": [
+                    "Followers"
+                ],
+                "summary": "following specific user",
+                "operationId": "Username-Check",
+                "parameters": [
+                    {
+                        "name": "follow_to",
+                        "in": "query",
+                        "description": "pass user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/following/list": {
+            "get": {
+                "tags": [
+                    "Followers"
+                ],
+                "summary": "Get following List",
+                "operationId": "Following-list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "search by first name, last name, and user_name",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/follower/list": {
+            "get": {
+                "tags": [
+                    "Followers"
+                ],
+                "summary": "Get following List",
+                "operationId": "Follower-list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "search by first name, last name, and user_name",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/notification/enable": {
+            "post": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Notification enable disable",
+                "operationId": "notification-enable-disable",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "1 - enable | 2 - disbale",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/change/password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Change Password",
+                "operationId": "change-password",
+                "parameters": [
+                    {
+                        "name": "current_password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/forgot/password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Forgot password",
+                "operationId": "forgot-password",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
